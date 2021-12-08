@@ -1,46 +1,34 @@
-# Getting Started with Create React App
+# The Box-Sizer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+When my little yarn shop grew, more orders came in. Not excluding wholesale orders. 
 
-## Available Scripts
 
-In the project directory, you can run:
+This brought a new challenge with it. Mainly: how do I get a large quantity of skeins abroad using the services of the Polish post? 
 
-### `npm start`
+The main issue was getting it all to fit in a box, that did not exceed the limitations set by them. The max length can not exceed 150 cm and the circumference measured perpendicular to the length could not exceed 300 cm. So every time I needed to change one dimension, I've had to recalculate the rest. This was kind of problematic, and I could have used an app for that, so I wrote one. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The Box-Sizer is not perfect, you can set the width or height to exceed the length, which would de facto make it the new length, but it serves its purpose.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Hope you like it ;)
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Extended bio
 
-### `npm run build`
+## This repository serves as storage for my projects and apps that I think will be a good introduction to my skills for a potential employer. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The projects presented here are finished. They reflect my current level of knowledge and programming skills. Although they are done, I'll be upgrading them when I gain the required knowledge to do so.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Personal introduction.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+My name is Szymon, but You can call me Simon if You like. After having multiple jobs first in physical labor and later on a couple of office jobs, I've started my own business in March 2019, although it was a startup for a couple of months before that. I wanted to work for myself and be artistically active. So I've opened a shop with hand-dyed yarn known as Slavica Yarns. 
 
-### `npm run eject`
+Somewhere down the road, I got annoyed by my current online shop provider, so I've decided to learn to program and create my own. I was already using basic HTML and CSS to style the various pages in my shop, so how hard could it be? I admit, I've bitten off more than I could chew, learning to be a full-stack developer in a year was madness. 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Even Though I was doomed to fail in creating my own online shop in a year, I've been bitten by the programming bug (pun intended ;P) and what was supposed to be a means to an end became my hobby of sorts. I was fascinated by what my mentor (a full-stack React developer) could do, how fast and easy it is for him to create all sorts of functionalities and logic. I know I have a long way to go, but that is what I would like to achieve. One day I would like to be able to sit down and write a whole web page or app from A to Z. I especially like writing logic, styling ain't much my thing, but figuring out the proper combination of functions, calling other functions, influencing multiple states at the same time to create the required result is my jam. Not that I'm much better at it than styling though. 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Hope You'll enjoy what You find in this repository. 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Have a nice day!
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+**PS**
+#### If You are an employer, or work in a HR department and think that I would be a good fit for Your company, drop me an email here: ***szymonjergas@interia.pl***, I'll make sure to answer. 
