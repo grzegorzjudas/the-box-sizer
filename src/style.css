@@ -1,0 +1,20 @@
+* {
+    font-family: Roboto;
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+}
+.app, html {
+    background-color: #aaa;
+}
+h1 {
+    font-size: 300%;
+    text-align: center;
+    margin: 50px auto;
+}
+input {
+    margin: 5px auto 20px auto;
+}
+.app, label, span { 
+    text-align: center;
+}

@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import './style.css';
+import Calculator from './components/Calculator';
+import SetupDrawer from './components/Drawer';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export function App() {
+
+    const [ measurementSum, setMeasurementSum ] = useState(0);
+    const [ maxLength, setMaxLength ] = useState(0);
+    const [ length, setLength ] = useState(1);
+    const [ width, setWidth ] = useState(1);
+    const [ height, setHeight ] = useState(1);
+
+    return (
+        <div className='app'>
+            <h1>THE BOX-SIZER</h1>
+            <Calculator 
+                measurementSum = {measurementSum} 
+                maxLength = {maxLength}
+                length = {length}
+                width = {width}
+                height = {height}
+                setLength = {setLength}
+                setWidth = {setWidth}
+                setHeight = {setHeight}
+            />
+            <SetupDrawer
+                measurementSum = {measurementSum}
+                maxLength = {maxLength}
+                setMeasurementSum = {setMeasurementSum}
+                setMaxLength = {setMaxLength}
+                setLength = {setLength}
+                setWidth = {setWidth}
+                setHeight = {setHeight}
+            />
+        </div>
+    );
 }
 
 export default App;
