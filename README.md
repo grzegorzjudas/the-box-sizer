@@ -16,12 +16,6 @@ Hope you like it ;)
 
 # Extended bio
 
-## This repository serves as storage for my projects and apps that I think will be a good introduction to my skills for a potential employer. 
-
-The projects presented here are finished. They reflect my current level of knowledge and programming skills. Although they are done, I'll be upgrading them when I gain the required knowledge to do so.
-
-## Personal introduction.
-
 My name is Szymon, but You can call me Simon if You like. After having multiple jobs first in physical labor and later on a couple of office jobs, I've started my own business in March 2019, although it was a startup for a couple of months before that. I wanted to work for myself and be artistically active. So I've opened a shop with hand-dyed yarn known as Slavica Yarns. 
 
 Somewhere down the road, I got annoyed by my current online shop provider, so I've decided to learn to program and create my own. I was already using basic HTML and CSS to style the various pages in my shop, so how hard could it be? I admit, I've bitten off more than I could chew, learning to be a full-stack developer in a year was madness. 
