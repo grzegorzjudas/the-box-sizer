@@ -48,7 +48,8 @@ export function Calculator(props: Props) {
         }
     }
 
-    function handleWidthHeightChange(e: any, newValue: number | number[]) {
+    // eslint-disable-next-line @typescript-eslint/ban-types
+    function handleWidthHeightChange(e: React.ChangeEvent<{}>, newValue: number | number[]) {
 
         const newWidth = newValue as number;
         const newHeight = Math.floor((measurementSum - length - (newWidth * 2)) / 2);

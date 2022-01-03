@@ -56,9 +56,10 @@ export function SetupDrawer(props: Props) {
         e.stopPropagation();
     }
 
-    function handleMeasurementSum(e: any) {
+    function handleMeasurementSum(e: React.ChangeEvent<HTMLInputElement>) {
 
-        const newSum = Math.floor(e.target.value);
+        const parsed = parseInt(e.target.value);
+        const newSum = Math.floor(parsed);
 
         setMeasurementSum(newSum);
         setLength(Math.floor(newSum / 5));
@@ -71,9 +72,11 @@ export function SetupDrawer(props: Props) {
         }
     }
 
-    function handleMaxLength(e: any) {
+    function handleMaxLength(e: React.ChangeEvent<HTMLInputElement>) {
     
-        const newMaxLength = Math.floor(e.target.value);
+        const parsed = parseInt(e.target.value);
+        const newMaxLength = Math.floor(parsed);
+
         setMaxLength(newMaxLength);
         if(newMaxLength > measurementSum - 4) {
             alert("The max length can't exceed the max sum - 4");
