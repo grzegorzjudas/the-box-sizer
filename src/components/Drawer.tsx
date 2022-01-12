@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
-import '../style.css';
-import { Drawer, Button, Backdrop } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { Drawer, Button, Backdrop, TextField, makeStyles } from '@material-ui/core';
 
-
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     button: {
         background: 'linear-gradient(45deg, orange 30%, teal 90%)',
         marginTop: '80px',
@@ -15,86 +12,96 @@ const useStyles = makeStyles({
         left: 0,
         zIndex: 20
     },
-    span: {
-        marginTop: '10px',
+    drawer: {
+        display: 'flex',
+        alignItems: 'center'
+    },
+    content: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        maxWidth: 800,
+        padding: `${theme.spacing(2)}px 0`
+    },
+    form: {
+        marginTop: theme.spacing(2),
+        display: 'flex'
+    },
+    input: {
+        marginRight: theme.spacing(1)
     }
-});
+}));
 
 type Props = {
-    measurementSum: number,
-    maxLength: number,
-    setMeasurementSum: React.Dispatch<React.SetStateAction<number>>,
-    setMaxLength: React.Dispatch<React.SetStateAction<number>>,
-    setLength: React.Dispatch<React.SetStateAction<number>>,
-    setWidth: React.Dispatch<React.SetStateAction<number>>,
-    setHeight: React.Dispatch<React.SetStateAction<number>>
+    show: boolean;
+    defaultMaxSum: number;
+    defaultMaxLength: number;
+    onMaxDimensionsChange: (sum: number, length: number) => void;
 };
 
-export function SetupDrawer(props: Props) {
-
+export function SetupDrawer({ show, defaultMaxSum, defaultMaxLength, onMaxDimensionsChange }: Props) {
     const classes = useStyles();
-    const measurementSum = props.measurementSum;
-    const maxLength = props.maxLength;
-    const setMeasurementSum = props.setMeasurementSum;
-    const setMaxLength = props.setMaxLength;
-    const setLength = props.setLength;
-    const setWidth = props.setWidth;
-    const setHeight = props.setHeight;
 
-    const [ menuOpen, setMenuOpen ] = useState(true);
+    const [ maxSum, setMaxSum ] = useState(defaultMaxSum);
+    const [ maxLength, setMaxLength ] = useState(defaultMaxLength);
 
-    function toggleMenu () {
-        if (maxLength == 0 || measurementSum == 0) {
-            alert('Please enter values for max sum and max length');
-        }
-        else {
-            setMenuOpen(!menuOpen);
-        }
+    function onSubmit (e: React.FormEvent) {
+        e.preventDefault();
+
+        onMaxDimensionsChange(maxSum, maxLength);
     }
-
-    function preventClose (e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-        e.stopPropagation();
-    }
-
-    function handleMeasurementSum(e: any) {
-
-        const newSum = Math.floor(e.target.value);
-
-        setMeasurementSum(newSum);
-        setLength(Math.floor(newSum / 5));
-        setWidth(Math.floor(newSum / 5));
-        setHeight(Math.floor(newSum / 5));
-        setMaxLength(Math.floor(newSum / 2));
-
-        if(newSum <= 0) {
-            setMeasurementSum(0);
-        }
-    }
-
-    function handleMaxLength(e: any) {
     
-        const newMaxLength = Math.floor(e.target.value);
-        setMaxLength(newMaxLength);
-        if(newMaxLength > measurementSum - 4) {
+    function onMaxSumChange (e: React.ChangeEvent<HTMLInputElement>) {
+        const value = parseInt(e.target.value, 10);
+
+        setMaxSum(Math.max(value, 0));
+        setMaxLength(Math.floor(value / 2));
+    }
+    
+    function onMaxLengthChange (e: React.ChangeEvent<HTMLInputElement>) {
+        const value = parseInt(e.target.value, 10);
+
+        if (value > maxSum - 4) {
             alert("The max length can't exceed the max sum - 4");
-            setMaxLength(measurementSum - 4);
+
+            return setMaxLength(value - 4);
         }
-        if(newMaxLength <= 0) {
-            setMaxLength(0);
-        }
+
+        setMaxLength(Math.max(value, 0));
     }
 
     return (
         <div>
-            <Button className={classes.button} onClick={toggleMenu}>Chnage max values</Button>
-            <Backdrop className={classes.backdrop} open={menuOpen} onClick={toggleMenu} >
-                <Drawer variant="persistent" anchor="bottom" open={menuOpen} onClick={preventClose}>
-                    <span className={classes.span}> Before You go further, please enter the maximal sum of length and the circumference measured perpendicular to the length</span>
-                    <span>and the maximal length allowed by the courier of Your choice.</span>
-                    <span className={classes.span}> max sum</span>
-                    <input type="number" min='1' onChange={handleMeasurementSum} value={measurementSum}/>
-                    <span>max length</span>
-                    <input type="number" min='1' max={measurementSum -4} onChange={handleMaxLength} value={maxLength}/>
+            <Backdrop className={classes.backdrop} open={show}>
+                <Drawer variant="persistent" anchor="bottom" open={show} classes={{ paper: classes.drawer }}>
+                    <div className={classes.content}>
+                        <span>
+                            Before you go further, please enter the maximal sum of length and the circumference measured perpendicular to the length and the maximal length allowed by the courier of your choice.
+                        </span>
+                        <form className={classes.form} onSubmit={onSubmit}>
+                            <TextField
+                                label="max sum"
+                                type="number"
+                                variant="outlined"
+                                value={maxSum}
+                                className={classes.input}
+                                InputProps={{ inputProps: { min: 1 } }}
+                                onChange={onMaxSumChange}
+                            />
+                            <TextField
+                                label="max length"
+                                type="number"
+                                variant="outlined"
+                                value={maxLength}
+                                className={classes.input}
+                                InputProps={{ inputProps: { min: 1 } }}
+                                onChange={onMaxLengthChange}
+                            />
+                            <Button type="submit" variant="contained" color="primary">
+                                Save
+                            </Button>
+                        </form>
+                    </div>
                 </Drawer>
             </Backdrop>
         </div>

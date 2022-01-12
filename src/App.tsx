@@ -1,39 +1,48 @@
 import React, { useState } from 'react';
-import './style.css';
+import { Button, makeStyles } from '@material-ui/core';
+
 import Calculator from './components/Calculator';
 import SetupDrawer from './components/Drawer';
 
-export function App() {
+const useStyles = makeStyles((theme) => ({
+    button: {
+        marginTop: theme.spacing(2)
+    }
+}));
 
-    const [ measurementSum, setMeasurementSum ] = useState(0);
+export function App() {
+    const classes = useStyles();
+
+    const [ drawerOpen, setDrawerOpen ] = useState(true);
+    const [ maxSum, setMaxSum ] = useState(0);
     const [ maxLength, setMaxLength ] = useState(0);
-    const [ length, setLength ] = useState(1);
-    const [ width, setWidth ] = useState(1);
-    const [ height, setHeight ] = useState(1);
+
+    function onMaxDimensionsChange (sum: number, length: number) {
+        setMaxSum(sum);
+        setMaxLength(length);
+
+        setDrawerOpen(false);
+    }
+
+    function openDrawer () {
+        setDrawerOpen(true);
+    }
 
     return (
-        <div className='app'>
+        <>
             <h1>THE BOX-SIZER</h1>
-            <Calculator 
-                measurementSum = {measurementSum} 
-                maxLength = {maxLength}
-                length = {length}
-                width = {width}
-                height = {height}
-                setLength = {setLength}
-                setWidth = {setWidth}
-                setHeight = {setHeight}
+            <Calculator
+                maxSum={maxSum} 
+                maxLength={maxLength}
             />
+            <Button variant="contained" color="primary" onClick={openDrawer} className={classes.button}>Change max sizes</Button>
             <SetupDrawer
-                measurementSum = {measurementSum}
-                maxLength = {maxLength}
-                setMeasurementSum = {setMeasurementSum}
-                setMaxLength = {setMaxLength}
-                setLength = {setLength}
-                setWidth = {setWidth}
-                setHeight = {setHeight}
+                show={drawerOpen}
+                defaultMaxSum={maxSum}
+                defaultMaxLength={maxLength}
+                onMaxDimensionsChange={onMaxDimensionsChange}
             />
-        </div>
+        </>
     );
 }
 
